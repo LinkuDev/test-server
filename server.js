@@ -1,9 +1,13 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const cors = require("cors"); // Import cors
 
 const app = express();
 const PORT = 3301;
+
+// Cấu hình CORS cho phép tất cả các nguồn
+app.use(cors());
 
 // Đường dẫn tới file key.txt
 const keyFilePath = path.join(__dirname, "key.txt");
@@ -22,6 +26,6 @@ app.get("/get-key", (req, res) => {
 });
 
 // Khởi động server
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-  });
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
